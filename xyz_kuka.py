@@ -37,7 +37,7 @@ class xyzkuka():
             self.pitch = self.euler[1]
             self.yaw = self.euler[2]
 
-            # print (self.yaw)
+
 
     def talker(self):
         #rospy.init_node('xyz_kuka', anonymous=True) #names the node

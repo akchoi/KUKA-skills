@@ -17,7 +17,7 @@ class xyz_vicon():
         self.xpos = []
         self.ypos = []
         self.zpos = []
-
+        
 
     def callback_helmet(self,data):
         #rospy.loginfo(data.detections) #need to find the format
@@ -40,6 +40,9 @@ class xyz_vicon():
             self.pitch = self.euler[1]
             self.yaw = self.euler[2]
 
+
+
+
     def get_xpos(self):
 
         if not self.xpos:
@@ -55,9 +58,9 @@ class xyz_vicon():
 
 
 if __name__ == '__main__':
-    rospy.init_node('xyz_helmet', anonymous=True) #names the node
+    rospy.init_node('xyz_beacon', anonymous=True) #names the node
     try:
-        helmet1 = helmet()
+        xyz_vicon('helmet')
         # helmet1.talker()
     except rospy.ROSInterruptException:
         pass

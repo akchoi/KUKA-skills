@@ -50,7 +50,7 @@ class arm():
         arm_ik_control.go_to_xyz(deltax, deltay, deltaz, self.arm_pub)
 
 if __name__ == '__main__':
-    name_of_object = input('Name of object: ')
+    name_of_object = 'cup2'
     arm = arm()
     while not rospy.is_shutdown():
         gripper_open.main()
