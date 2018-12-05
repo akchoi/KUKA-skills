@@ -104,11 +104,11 @@ class kuka():
             kuka1.linearvel(xvel,yvel)
 
         kuka1.linearvel(0,0)
-        exit()
+
 
 if __name__ == '__main__':
     name_of_object = 'waypoint_1'
-    stopping_distance = 0.5
+    stopping_distance = 0.2
     velocity_scaling_factor = 0.1
     kuka1 = kuka() #calling kuka class
     while not rospy.is_shutdown():

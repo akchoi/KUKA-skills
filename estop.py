@@ -28,6 +28,6 @@ class kuka():
 
 if __name__ == '__main__':
     kuka1 = kuka()
-    while True:
+    while not rospy.is_shutdown():
         kuka1.stop()
-    rospy.spin()
+    # rospy.spin()

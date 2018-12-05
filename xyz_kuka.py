@@ -37,6 +37,8 @@ class xyzkuka():
             self.pitch = self.euler[1]
             self.yaw = self.euler[2]
 
+            # print("x: {} y: {}".format(self.xpos, self.ypos))
+
 
 
     def talker(self):
