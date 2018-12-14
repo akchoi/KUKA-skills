@@ -9,105 +9,139 @@ import time
 '''
 This simple script show how to publish a message to a joint. The robot will pick up a cup and place it on top of KUKA
 '''
-def main():
-    pub = rospy.Publisher('/arm_1/arm_controller/position_command', JointPositions, queue_size =  10)
-    #rospy.init_node('arm_test')
 
-    '''initial positions'''
+class arm():
 
-    msg = JointPositions()
-    msg.positions = [JointValue()]
-    msg.positions[0].timeStamp = rospy.Time.now()
-    msg.positions[0].joint_uri = "arm_joint_1"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 0.011
-    msg.positions[0].joint_uri = "arm_joint_2"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 0.011
-    msg.positions[0].joint_uri = "arm_joint_3"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = -0.016
-    msg.positions[0].joint_uri = "arm_joint_4"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 0.0222
-    msg.positions[0].joint_uri = "arm_joint_5"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 0.111
+    def __init__(self):
+        # rospy.init_node('pickupobject')
+        self.arm_pub = rospy.Publisher('/arm_1/arm_controller/position_command', JointPositions, queue_size = 10)
+    def main(self):
+        pub = rospy.Publisher('/arm_1/arm_controller/position_command', JointPositions, queue_size =  10)
+        # rospy.init_node('arm_test')
+        '''initial positions'''
+        msg = JointPositions()
+        print "going to initial position"
 
-    pub.publish(msg)
+        msg.positions = [JointValue()]
+        msg.positions[0].timeStamp = rospy.Time.now()
+        msg.positions[0].joint_uri = "arm_joint_1"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 0.011
+        pub.publish(msg)
 
-    # time.sleep(1)
-    # msg.positions[0].joint_uri = "arm_joint_1"
-    # msg.positions[0].value = 1.3
-    # pub.publish(msg)
-    #
-    # msg.positions[0].joint_uri = "arm_joint_2"
-    # msg.positions[0].unit = "rad"
-    # msg.positions[0].value = 1.3
-    # pub.publish(msg)
-    #
-    # msg.positions[0].joint_uri = "arm_joint_3"
-    # msg.positions[0].unit = "rad"
-    # msg.positions[0].value = -1.2
-    # pub.publish(msg)
-    #
-    # time.sleep(2)
-    #
-    # msg.positions[0].joint_uri = "arm_joint_4"
-    # msg.positions[0].unit = "rad"
-    # msg.positions[0].value = 2.8
-    # pub.publish(msg)
-    # gripper_open.main()
-    #
-    # time.sleep(2)
-    #
-    #
-    # msg.positions[0].joint_uri = "arm_joint_2"
-    # msg.positions[0].unit = "rad"
-    # msg.positions[0].value = 2
-    # pub.publish(msg)
-    #
-    # gripper_close.main()
-    # time.sleep(2)
-    #
-    # msg.positions[0].joint_uri = "arm_joint_2"
-    # msg.positions[0].unit = "rad"
-    # msg.positions[0].value = 0.5
-    # pub.publish(msg)
-    #
-    # time.sleep(2)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_2"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 0.011
+        pub.publish(msg)
 
-    msg.positions[0].joint_uri = "arm_joint_1"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 0.075
-    pub.publish(msg)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_3"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = -0.016
+        pub.publish(msg)
 
-    time.sleep(1)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_4"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 0.0222
+        pub.publish(msg)
 
-    msg.positions[0].joint_uri = "arm_joint_2"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 1.45
-    pub.publish(msg)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_5"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 0.111
+        pub.publish(msg)
 
-    time.sleep(1)
+        rospy.sleep(1)
+        print "time to move"
+        msg.positions[0].joint_uri = "arm_joint_1"
+        msg.positions[0].value = 0.011
+        pub.publish(msg)
 
-    msg.positions[0].joint_uri = "arm_joint_4"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 2.9
-    pub.publish(msg)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_2"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 1.3
+        pub.publish(msg)
 
-    gripper_open.main()
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_3"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = -1.2
+        pub.publish(msg)
 
-    time.sleep(1)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_5"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 2.8
+        pub.publish(msg)
 
-    msg.positions[0].joint_uri = "arm_joint_2"
-    msg.positions[0].unit = "rad"
-    msg.positions[0].value = 0.5
-    pub.publish(msg)
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_4"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = 2.5
+        pub.publish(msg)
 
-    rospy.spin()
+        rospy.sleep(1)
+        msg.positions[0].joint_uri = "arm_joint_3"
+        msg.positions[0].unit = "rad"
+        msg.positions[0].value = -1
+        pub.publish(msg)
+
+
+        gripper_open.main()
+
+        # time.sleep(2)
+        #
+        #
+        # msg.positions[0].joint_uri = "arm_joint_2"
+        # msg.positions[0].unit = "rad"
+        # msg.positions[0].value = 2
+        # pub.publish(msg)
+        #
+        # gripper_close.main()
+        # time.sleep(2)
+        #
+        # msg.positions[0].joint_uri = "arm_joint_2"
+        # msg.positions[0].unit = "rad"
+        # msg.positions[0].value = 0.5
+        # pub.publish(msg)
+        #
+        # time.sleep(2)
+        #
+        # msg.positions[0].joint_uri = "arm_joint_1"
+        # msg.positions[0].unit = "rad"
+        # msg.positions[0].value = 0.075
+        # pub.publish(msg)
+        #
+        # time.sleep(1)
+        #
+        # msg.positions[0].joint_uri = "arm_joint_2"
+        # msg.positions[0].unit = "rad"
+        # msg.positions[0].value = 1.45
+        # pub.publish(msg)
+        #
+        # time.sleep(1)
+        #
+        # msg.positions[0].joint_uri = "arm_joint_4"
+        # msg.positions[0].unit = "rad"
+        # msg.positions[0].value = 2.9
+        # pub.publish(msg)
+        #
+        # gripper_open.main()
+        #
+        # time.sleep(1)
+        #
+        # msg.positions[0].joint_uri = "arm_joint_2"
+        # msg.positions[0].unit = "rad"
+        # msg.positions[0].value = 0.5
+        # pub.publish(msg)
+
+
 
 
 
 if __name__ == "__main__":
-    main()
+    arm = arm()
+    arm.main()

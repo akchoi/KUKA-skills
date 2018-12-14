@@ -15,7 +15,7 @@ class kuka():
     #"A class for connecting to and sending commands to a kuka"
 
     def __init__(self):
-        #rospy.init_node('Kuka_velocity', anonymous=True) #creating a node
+        # rospy.init_node('Kuka_velocity', anonymous=True) #creating a node
         self.cmd_pub = rospy.Publisher('/cmd_vel',Twist,queue_size=10)
 
     def linearvel(self,x,y): #setting the velocity to the input velocity
@@ -62,7 +62,7 @@ class kuka():
         # self.stop_distance = stop_distance
         # self.vel_scaling_factor = vel_scaling_factor
         object_name = "waypoint_2"
-        stop_distance = 0.5
+        stop_distance = 0.1
         vel_scaling_factor = 0.1
 
         beacon1 = xyz_vicon.xyz_vicon(object_name) #calling that object class from xyz_vicon

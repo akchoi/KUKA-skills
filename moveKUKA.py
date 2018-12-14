@@ -58,6 +58,7 @@ class kuka():
         """
         description
         """
+        kuka1.linearvel(0.1,0.1)
         self.object_name = object_name
         self.stop_distance = stop_distance
         self.vel_scaling_factor = vel_scaling_factor
@@ -104,9 +105,11 @@ class kuka():
         exit()
 
 if __name__ == '__main__':
+
     name_of_object = input('Name of the object: ')
     stopping_distance = input('Stopping distance (m): ')
     velocity_scaling_factor = input('Velocity Scaling Factor: ')
     kuka1 = kuka() #calling kuka class
+    
     while not rospy.is_shutdown():
         kuka1.move_to_object(name_of_object,stopping_distance, velocity_scaling_factor)
